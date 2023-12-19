@@ -1,6 +1,6 @@
 package conta.model;
 
-public class Conta {
+public abstract class Conta {
     private int numero;
     private int agencia;
     private int tipo;
@@ -15,8 +15,8 @@ public class Conta {
         this.titular = titular;
         this.saldo = saldo;
     }
-
-    // Getters e Setters
+    
+	// Getters e Setters
     public int getNumero() {
         return numero;
     }
@@ -59,7 +59,7 @@ public class Conta {
 
     // Métodos específicos
     public boolean sacar(float valor) {
-        if (saldo >= valor) {
+        if (this.getSaldo() >= valor) {
             setSaldo(saldo - valor);
             return true;
         } else {
@@ -69,11 +69,11 @@ public class Conta {
     }
 
     public void depositar(float valor) {
-        setSaldo(saldo + valor);
+        this.setSaldo(this.getSaldo() + valor);
     }
 
     public void visualizar() {
-        String tipoConta;
+        String tipoConta = " ";
         switch (tipo) {
             case 1:
                 tipoConta = "Conta Corrente";
@@ -89,11 +89,11 @@ public class Conta {
         System.out.println("**********************************************************************");
         System.out.println("Dados da Conta:");
         System.out.println("**********************************************************************");
-        System.out.println("Numero da Conta: " + numero);
-        System.out.println("Agência: " + agencia);
+        System.out.println("Numero da Conta: " + this.numero);
+        System.out.println("Agência: " + this.agencia);
         System.out.println("Tipo da Conta: " + tipoConta);
-        System.out.println("Titular: " + titular);
-        System.out.println("Saldo: " + saldo);
+        System.out.println("Titular: " + this.titular);
+        System.out.println("Saldo: " + this.saldo);
         System.out.println();
     }
 }

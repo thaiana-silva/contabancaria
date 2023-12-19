@@ -2,24 +2,11 @@ package conta;
 
 import java.util.Scanner;
 import conta.util.Cores;
-import conta.model.Conta;
 import conta.model.ContaCorrente;
 import conta.model.ContaPoupanca;
 
 public class Menu {
     public static void main(String[] args) {
-    	
-    	Conta conta1 = new Conta(12345, 789, 1, "João", 1000);
-        conta1.visualizar();
-        
-        conta1.depositar(500);
-        conta1.visualizar();
-        
-        conta1.sacar(300);
-        conta1.visualizar();
-        
-        conta1.sacar(1500);
-        conta1.visualizar();
         
         ContaCorrente contaCorrente1 = new ContaCorrente(1, 123, 1, "Mariana", 8000, 1000);
         contaCorrente1.visualizar();
