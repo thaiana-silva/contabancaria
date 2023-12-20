@@ -59,13 +59,13 @@ public abstract class Conta {
 
     // Métodos específicos
     public boolean sacar(float valor) {
-        if (this.getSaldo() >= valor) {
-            setSaldo(saldo - valor);
-            return true;
+        if (this.getSaldo() < valor) {
+        	System.out.println("\nSaldo Insuficiente!");
+			return false;
         } else {
-            System.out.println("Saldo Insuficiente!");
-            return false;
-        }
+        	this.setSaldo(this.getSaldo() - valor);
+    		return true;
+    		}
     }
 
     public void depositar(float valor) {
@@ -73,25 +73,22 @@ public abstract class Conta {
     }
 
     public void visualizar() {
-        String tipoConta = " ";
-        switch (tipo) {
+        String tipo = " ";
+        switch (this.tipo) {
             case 1:
-                tipoConta = "Conta Corrente";
+                tipo = "Conta Corrente";
                 break;
             case 2:
-                tipoConta = "Conta Poupança";
-                break;
-            default:
-                tipoConta = "Tipo de Conta Inválido";
+                tipo = "Conta Poupança";
                 break;
         }
 
-        System.out.println("**********************************************************************");
+        System.out.println("\n\n**********************************************************************");
         System.out.println("Dados da Conta:");
         System.out.println("**********************************************************************");
         System.out.println("Numero da Conta: " + this.numero);
         System.out.println("Agência: " + this.agencia);
-        System.out.println("Tipo da Conta: " + tipoConta);
+        System.out.println("Tipo da Conta: " + tipo);
         System.out.println("Titular: " + this.titular);
         System.out.println("Saldo: " + this.saldo);
         System.out.println();
